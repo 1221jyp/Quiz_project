@@ -1,0 +1,71 @@
+/* src/app/newquiz/Checkbox.css */
+
+/* 기본 컨테이너 스타일 */
+.checkbox-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f5f5f5;
+}
+
+/* 제목 스타일 */
+h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+/* 입력 필드 스타일 */
+input {
+  margin: 5px 0;
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* 같은행 배치 */
+.checkbox-row {
+  display: flex;
+}
+
+.num {
+  margin-right: 10px;
+  font-size: 20px;
+  align-items: center;
+  display: flex;
+}
+
+/* 체크박스 스타일 */
+input[type="checkbox"] {
+  margin-right: 10px;
+  scale: 1.5;
+}
+input[type="text"] {
+  margin-right: 10px;
+  width: 500px;
+}
+
+/* 제출 버튼 스타일 */
+.submit-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.submit-button:hover {
+  background-color: #0056b3;
+}
+
+.howto {
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  background-color: #f5f5f5;
+}

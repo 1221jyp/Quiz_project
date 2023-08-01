@@ -14,10 +14,10 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={inter.className}>
         <div className="header">
-          <Link href="" className="title">
+          <Link href="/" className="title">
             Quiz time!
           </Link>
-          <Link href="" className="nav_btn">
+          <Link href="/newquiz" className="nav_btn">
             퀴즈 만들기
           </Link>
           <Link href="" className="nav_btn">

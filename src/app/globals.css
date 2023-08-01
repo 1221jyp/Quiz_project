@@ -1,11 +1,13 @@
-/* CSS for the RootLayout component */
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500&display=swap");
+html {
+  font-family: "Noto Sans KR", sans-serif;
+}
 body {
-  font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
   background-color: #f9f9f9; /* Set the background color for the body */
 }
-
+/*layout.js*/
 .header {
   background-color: #ff6b6b; /* Set the background color for the header */
   padding: 20px;
@@ -57,7 +59,46 @@ body {
 }
 
 .login_btn:hover {
-  background-color: #27ae60; /* Change the background color on hover */
+  background-color: #27ae60;
+} /* Change the background color on hover */
+
+/*loading.js*/
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background-color: #f0f0f0;
+}
+
+.loading-container {
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+.loading-spinner {
+  border: 4px solid rgba(0, 0, 0, 0.3);
+  border-top: 4px solid #3498db;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 10px;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loading-text {
+  color: #333;
+  font-size: 18px;
 }
 
 /* You can add more custom CSS here for other elements in the RootLayout */
