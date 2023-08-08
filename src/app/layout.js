@@ -20,7 +20,7 @@ export default function RootLayout({ children }) {
           <Link href="/newquiz" className="nav_btn">
             퀴즈 만들기
           </Link>
-          <Link href="" className="nav_btn">
+          <Link href="/quiz" className="nav_btn">
             퀴즈 풀기
           </Link>
           <button onClick="" className="login_btn">

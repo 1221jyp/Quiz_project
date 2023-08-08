@@ -54,26 +54,12 @@ export default function Checkbox() {
     <form action="/api/write" method="POST" onSubmit={handleSubmit}>
       <div className="checkbox-container">
         <h1>퀴즈 만들기</h1>
-        <input
-          name="q"
-          type="text"
-          placeholder="문제의 내용을 입력하세요."
-          autoComplete="off"
-        ></input>
+        <input name="q" type="text" placeholder="문제의 내용을 입력하세요." autoComplete="off"></input>
         {multiple_choice.map((a, i) => (
           <div className="checkbox-row" key={i}>
             <div className="num">{multiple_choice[i] + ")"}</div>
-            <input
-              type="text"
-              name={"c" + multiple_choice[i]}
-              placeholder={multiple_choice[i] + "번 문제"}
-            />
-            <input
-              type="checkbox"
-              name="a"
-              value={"a" + multiple_choice[i]}
-              onChange={(e) => onlyone(e.target)}
-            />
+            <input type="text" name={"c" + multiple_choice[i]} placeholder={multiple_choice[i] + "번 문제"} />
+            <input type="checkbox" name="a" value={multiple_choice[i]} onChange={(e) => onlyone(e.target)} />
           </div>
         ))}
         <button type="submit" className="submit-button">

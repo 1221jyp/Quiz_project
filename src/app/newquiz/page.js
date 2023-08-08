@@ -1,5 +1,6 @@
-import { connectDB } from "@/util/DB";
+import { connectDB } from "/Users/jyp/Documents/GitHub/quiz_project/src/util/db.js";
 import Checkbox from "./Checkbox";
+
 export default async function Newquiz() {
   const client = await connectDB;
   const db = client.db("Quiz_Data");
