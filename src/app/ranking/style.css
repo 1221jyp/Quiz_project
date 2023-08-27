@@ -1,0 +1,21 @@
+.container {
+  height: 40px;
+  display: flex;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 3px;
+  box-shadow: rgb(200, 200, 200) 0px 2px 4px 0px;
+  align-items: center;
+}
+.list {
+  padding: 50px;
+}
+.text {
+  margin-right: 30px;
+}
+
+@media (max-width: 768px) {
+  .list {
+    padding: 10px;
+  }
+}

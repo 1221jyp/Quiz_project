@@ -41,11 +41,6 @@ button {
   align-items: center;
 }
 
-.button-list {
-  display: flex;
-  justify-content: center;
-}
-
 .btn:hover {
   background-color: #2980b9;
 }
@@ -77,12 +72,6 @@ button {
   display: block;
 }
 
-.submitButton {
-  margin: 50px;
-  margin-left: 300px;
-  margin-right: 300px;
-}
-
 .white-bg {
   width: 800px;
   height: 500px;
@@ -98,6 +87,13 @@ button {
   justify-content: center;
   flex-wrap: wrap;
 }
+
+.submitButton {
+  margin: 50px;
+  margin-left: 300px;
+  margin-right: 300px;
+}
+
 .outer {
   border: 1px solid black;
   width: 1400px;
@@ -118,8 +114,8 @@ button {
   flex-direction: column;
 }
 
-.button-list {
-  text-align: center;
+.question {
+  margin-left: 20px;
 }
 .contentbox {
   display: flex;
@@ -130,6 +126,17 @@ button {
   font-size: 20px;
   width: 400px;
 }
-.question {
-  margin-left: 20px;
+.button-list {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+@media (max-width: 768px) {
+  #load {
+    display: none;
+  }
+  .outer {
+    width: 100%;
+  }
 }

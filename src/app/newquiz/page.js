@@ -1,15 +1,13 @@
-import { connectDB } from "/Users/jyp/Documents/GitHub/quiz_project/src/util/db.js";
 import Checkbox from "./Checkbox";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/pages/api/auth/[...nextauth]";
 
 export default async function Newquiz() {
-  const client = await connectDB;
-  const db = client.db("Quiz_Data");
-  let result = await db.collection("Quiz").find().toArray();
-  console.log(result);
+  let session = await getServerSession(authOptions);
   return (
     <>
       <div className="container">
-        <Checkbox></Checkbox>
+        <Checkbox session={session}></Checkbox>
       </div>
       <div className="howto">
         <h2>퀴즈 작성하는법</h2>

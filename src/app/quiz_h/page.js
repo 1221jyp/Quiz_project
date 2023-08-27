@@ -1,5 +1,7 @@
 import Util from "./util";
 import { connectDB } from "/Users/jyp/Documents/GitHub/quiz_project/src/util/db.js";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/pages/api/auth/[...nextauth]";
 
 export default async function Quiz_h() {
   const client = await connectDB;
@@ -29,9 +31,11 @@ export default async function Quiz_h() {
     answer.push(numbers[index]);
     numbers.splice(index, 1);
   }
+  //로그인정보 가져오기
+  let session = await getServerSession(authOptions);
   return (
     <>
-      <Util answer={answer} result={result}></Util>
+      <Util answer={answer} result={result} session={session}></Util>
     </>
   );
 }

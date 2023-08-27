@@ -2,8 +2,9 @@
 import LoadingPage from "../loading";
 import "./style.css";
 import React, { useEffect } from "react";
+import { signIn } from "next-auth/react";
 
-export default async function Util({ result, answer }) {
+export default async function Util({ result, answer, session }) {
   const onlyone = (checkThis) => {
     const checkboxes = document.getElementsByClassName("q");
     for (let i = 0; i < checkboxes.length; i++) {
@@ -59,17 +60,16 @@ export default async function Util({ result, answer }) {
         const checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
         const checkedValues = Array.from(checkboxes).map((checkbox) => checkbox.value);
 
-        //19번째 문제에 도달했을때, 20번째 문제의 버튼은 '제출'로 보이게 하기
-        if (count >= 18) {
-          buttonRight.innerText = "제출";
-        }
-        //마지막 문제까지 제출하면, 결과 보여주기
-        if (count == 19) {
-          showResult.classList.add("show-modal");
-        }
-
         //체크박스에 입력한 문제가 정답이라면 answer에 1을 넣고, 스코어 추가
-        else if (checkedValues == result[answer[count]].a) {
+        if (checkedValues == result[answer[count]].a) {
+          //19번째 문제에 도달했을때, 20번째 문제의 버튼은 '제출'로 보이게 하기
+          if (count >= 18) {
+            buttonRight.innerText = "제출";
+          }
+          //마지막 문제까지 제출하면, 결과 보여주기
+          if (count == 19) {
+            showResult.classList.add("show-modal");
+          }
           IsitCorrect["answer" + count] = 1;
           score++;
           showScore.innerText = `${score * 5}`;
@@ -84,16 +84,22 @@ export default async function Util({ result, answer }) {
     });
 
     submitButton.addEventListener("click", async () => {
-      console.log(IsitCorrect);
       IsitCorrect["result"] = score * 5;
+      IsitCorrect["user"] = session.user.name;
       await fetch("/api/result", {
         method: "POST",
         body: JSON.stringify(IsitCorrect),
       }).then(() => {
         console.log("success");
         alert("제출완료");
+        window.location.href = "/";
       });
     });
+
+    //로그인 안되어있으면 로그인시키기
+    if (!session) {
+      signIn();
+    }
 
     //문제 개수만큼 div박스 늘리기
     let currentIndex = 0;
@@ -144,6 +150,7 @@ export default async function Util({ result, answer }) {
                 <h1 className="question">
                   {i + 1}번문제) {result[a].q}
                 </h1>
+                <h3>작성자 :</h3>
                 <div className="contentbox">
                   <div className="content">{result[a].c1}</div>
                   <input

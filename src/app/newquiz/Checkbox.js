@@ -1,8 +1,12 @@
 "use client";
 
-import "./Checkbox.css"; // Import the CSS file for styling
+import "./Checkbox.css";
+import { signIn } from "next-auth/react";
 
-export default function Checkbox() {
+export default function Checkbox({ session }) {
+  if (!session) {
+    signIn();
+  }
   let multiple_choice = [1, 2, 3, 4, 5];
 
   const onlyone = (checkThis) => {
@@ -15,11 +19,12 @@ export default function Checkbox() {
   };
 
   const handleSubmit = (event) => {
-    event.preventDefault(); // 기본 제출 동작 방지
-
     const QuestionInput = event.target.elements.q;
     const inputElements = event.target.elements;
     const checkboxes = document.getElementsByName("a");
+    const userName = document.querySelector("#userName");
+
+    userName.value = session.user.name;
 
     // "c"가 포함된 "name"을 가진 input 중 하나라도 비어있는지 확인
     let isAnyInputEmpty = false;
@@ -38,6 +43,8 @@ export default function Checkbox() {
       }
     }
 
+    event.preventDefault(); // 기본 제출 동작 방지
+
     if (!QuestionInput.value) {
       // 제목 또는 내용이 비어있는 경우
       alert("문제 내용을 입력해주세요!");
@@ -54,14 +61,29 @@ export default function Checkbox() {
     <form action="/api/write" method="POST" onSubmit={handleSubmit}>
       <div className="checkbox-container">
         <h1>퀴즈 만들기</h1>
-        <input name="q" type="text" placeholder="문제의 내용을 입력하세요." autoComplete="off"></input>
+        <input
+          name="q"
+          type="text"
+          placeholder="문제의 내용을 입력하세요."
+          autoComplete="off"
+        ></input>
         {multiple_choice.map((a, i) => (
           <div className="checkbox-row" key={i}>
             <div className="num">{multiple_choice[i] + ")"}</div>
-            <input type="text" name={"c" + multiple_choice[i]} placeholder={multiple_choice[i] + "번 문제"} />
-            <input type="checkbox" name="a" value={multiple_choice[i]} onChange={(e) => onlyone(e.target)} />
+            <input
+              type="text"
+              name={"c" + multiple_choice[i]}
+              placeholder={multiple_choice[i] + "번 문제"}
+            />
+            <input
+              type="checkbox"
+              name="a"
+              value={multiple_choice[i]}
+              onChange={(e) => onlyone(e.target)}
+            />
           </div>
         ))}
+        <input style={{ display: "none" }} type="text" name="userid" id="userName"></input>
         <button type="submit" className="submit-button">
           제출하기
         </button>

@@ -24,9 +24,6 @@ body {
 }
 
 .nav_btn {
-  color: #fff; /* Set the text color for the navigation buttons */
-  background-color: #5f27cd; /* Set the background color for the navigation buttons */
-  border: 2px solid #5f27cd; /* Add a border to the navigation buttons */
   padding: 12px 24px;
   text-decoration: none;
   font-size: 18px;
@@ -36,6 +33,18 @@ body {
   transition: box-shadow 0.3s ease, background-color 0.3s ease, color 0.3s ease; /* Add transitions to multiple properties */
 }
 
+.nav_btn_color {
+  color: #fff;
+  background-color: #5f27cd; /* Set the background color for the navigation buttons */
+  border: 2px solid #5f27cd;
+}
+
+.login_btn_color {
+  color: #fff; /* Set the text color for the login button */
+  background-color: #2ecc71; /* Set the background color for the login button */
+  border: none;
+}
+
 .nav_btn:first-child {
   margin-left: 0;
 }
@@ -43,19 +52,6 @@ body {
 .nav_btn:hover {
   background-color: #341f97; /* Change the background color on hover */
   border-color: #341f97; /* Change the border color on hover */
-}
-
-.login_btn {
-  color: #fff; /* Set the text color for the login button */
-  background-color: #2ecc71; /* Set the background color for the login button */
-  border: none;
-  padding: 12px 24px;
-  text-decoration: none;
-  font-size: 18px;
-  border-radius: 30px;
-  margin-left: 10px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Add a subtle box-shadow for the 3D effect */
-  transition: box-shadow 0.3s ease, background-color 0.3s ease; /* Add transitions to multiple properties */
 }
 
 .login_btn:hover {
@@ -101,4 +97,20 @@ body {
   font-size: 18px;
 }
 
+.UserName {
+  display: flex;
+  margin-left: 10px;
+}
+
+@media (max-width: 768px) {
+  .nav_btn {
+    padding: 4px 4px;
+    margin-left: 5px;
+    font-size: 12px;
+  }
+  .title {
+    font-size: 20px;
+    margin-right: 10px;
+  }
+}
 /* You can add more custom CSS here for other elements in the RootLayout */

@@ -2,9 +2,7 @@
 
 /* 기본 컨테이너 스타일 */
 .checkbox-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  text-align: center;
   margin: 20px;
   padding: 20px;
   border: 1px solid #ccc;
@@ -68,4 +66,23 @@ input[type="text"] {
   padding: 20px;
   border: 1px solid #ccc;
   background-color: #f5f5f5;
+}
+@media (max-width: 768px) {
+  input[type="text"] {
+    margin-right: 0px;
+    width: 80%;
+  }
+  .checkbox-container {
+    padding: 5px;
+    margin: 10px;
+  }
+  .checkbox-row {
+    display: flex;
+  }
+  .howto {
+    margin: 10px;
+  }
+  .num {
+    margin-right: auto;
+  }
 }
